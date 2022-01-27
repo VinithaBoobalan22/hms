@@ -1,0 +1,41 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>HMS</title>
+  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<style>
+    body{
+	background-image: url({% static 'doctor-with-stethoscope-hands-hospital-background_1423-1.webp' %});
+	background-repeat: no-repeat;
+	background-size: 1500px 700px;
+}
+</style>   
+</head>
+<body>
+	<div class="container-fluid">
+  		<h1 style="font-size: 300%; color:Indigo; text-shadow:3px 3px white"><b>HOSPITAL MANAGEMENT SYSTEM
+  		<h4 style="float:right; color:purple; text-shadow:none"><b>Logged in as Patient</b></h4>
+  		</b></h1><br>
+  		<div class="row">
+  		<div class="col-lg-6"><center><a href="patient_book_appointment" class="btn btn-primary"><b style="color:white">Health Tips</b></a></center></div>
+  		<div class="col-lg-6"><center><a href="patient_logout" class="btn btn-primary"><b style="color:white">Logout</b></a></center></div>     
+     
+  		</div>  		    
+ 		<br><br><br><br><br><br>
+ 		<div class="jumbotron-fluid" style="margin-bottom: 0px;margin-top: 0px;"> 
+ 		<center style="color:midnightblue; font-size: 400%">Hello! Patient<br>Welcome</center>
+ 		</div> <br><br><br><br><br><br><br><br><br><br>
+ 		<h4 style="color:black">©copyright2022|All rights reserved</h4>	
+     	</div>  
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  </body>
+</html>

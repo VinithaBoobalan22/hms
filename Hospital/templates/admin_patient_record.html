@@ -1,0 +1,36 @@
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+th, td {
+  background-color: #96D4D4;
+  height: 20px;
+}
+</style>
+</head>
+<body style="background-color: darkcyan">
+	<center><h1 style="color: white">Patient Records</h1></center>
+	<center>
+	<table style="width:100%; height:10%">
+		<tr>			
+			<th>Username</th>
+			<th>Password</th>
+			<th>Contact</th>
+			<th>Symptoms</th>
+		</tr>
+		{% for i in result %}
+        	<tr>
+        		{% for j in i %}
+        		  <td>{{j}}</td>
+        		{% endfor %}
+               	</tr>
+        	{% endfor %}		
+	</table>
+	</center>
+</body>
+</html>
+
+

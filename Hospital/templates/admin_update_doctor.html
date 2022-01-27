@@ -1,0 +1,140 @@
+<html>
+<head>
+<style type="text/CSS">
+*{
+	font-family: serif;
+	
+}
+label{
+    width: 100px;
+    display: inline-block;
+    margin-right: 10%;
+    float: left;    
+}
+#form {
+    border-radius: 30px;
+    color: black;
+    border-spacing:40px;
+    width: 380px; 
+    font-size:20px;
+    padding: 10px;
+} 
+body{
+  background-image: linear-gradient(to left,plum,Tomato,Salmon,Tomato,plum);
+}
+input{
+	padding: 4px;
+}
+</style>
+</head>
+<body>
+<center><h1>Update Doctor Records</h1><br><br>
+<div id="form">
+	<form action="admin_update_doctor_success" method="POST">{% csrf_token %}
+		<label>UserName</label>
+		<input type="email" name="Email" id="el" onkeyup="emailvalid()" placeholder="Enter doctor new email-id" required><span id="err" style="font-family:TimesNewRoman"></span><br><br>
+		<label>Password</label>
+		<input type="password" name="pass" id="ps" onkeyup="passvalid()" placeholder="Enter doctor registered  password" required><span id="err1" style="font-family:TimesNewRoman"></span><br><br>
+		<label>Contact</label>
+		<input type="tel" name="num" id="contact" onkeyup="contactvalid()" placeholder="Enter doctor new contact number" required><span id="err2" style="font-family:TimesNewRoman"></span><br><br>
+		<input type="submit" value="Update" onclick="valid()"></td>
+	</form></center></div>
+</center>
+<script>
+	function valid(){
+	
+		var email = document.getElementById("el").value;
+		var ps = document.getElementById("ps").value;
+		var contact = document.getElementById("contact").value;
+		err=document.getElementById("err");
+		err1=document.getElementById("err1");
+		err2=document.getElementById("err2");
+		if(!email.length==0 && !ps.length==0 && !contact.length==0)
+		{
+			alert("Updated Successfully!")
+		}
+		
+		else
+		{
+			if(email.length==0)
+			{
+				err.innerHTML="*PLZ enter EmailID";
+				err.style.color="blue";	
+			}
+			else
+			{
+				err.innerHTML="";	
+			}
+			
+			if(ps.length==0)
+			{
+				err1.innerHTML="*PLZ enter password";
+				err1.style.color="blue";
+			}
+			else
+			{
+				err1.innerHTML="";
+			}
+			
+			if(contact.length==0)
+			{
+				err2.innerHTML="*PLZ enter contact number";
+				err2.style.color="blue";	
+			}
+			else
+			{
+				err2.innerHTML="";
+			}
+			
+		}
+	}
+	function emailvalid(){
+		var email,reg;
+   	   	reg= /^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,3})$/;
+   	    	email=document.getElementById("el").value;
+   	   	err=document.getElementById("err");
+   	  	if(!reg.test(email))
+   	    	{
+   	       		err.innerHTML="Invalid EmailId!";
+   	        	err.style.color="blue";
+   	    	}
+   	    	else
+   	    	{
+   	        	err.innerHTML="";
+   	    	}
+	}
+	function passvalid()
+	{
+		var ps=document.getElementById("ps").value;
+		var err3=document.getElementById("err1");
+		
+		if(ps.length<5||ps.length>8)
+            	{
+                	err1.innerHTML="Please enter valid password";
+                	err1.style.color="blue";
+            	}
+            	else
+            	{
+                	err1.innerHTML="";
+            	}
+	}
+	function contactvalid()
+	{
+		var contact,reg;
+   	   	reg=  /^\d{10}$/
+   	    	contact=document.getElementById("contact").value;
+   	   	err4=document.getElementById("err2");
+   	  	if(!reg.test(contact))
+   	    	{
+   	       		err2.innerHTML="Invalid contact";
+   	        	err2.style.color="blue";
+   	    	}
+   	    	else
+   	    	{
+   	        	err2.innerHTML="";
+   	    	}
+	} 
+	
+</script>
+</body>
+</html>

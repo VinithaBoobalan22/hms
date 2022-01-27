@@ -1,0 +1,121 @@
+<html>
+<head> 
+ 	<h1>HOSPITAL MANAGEMENT SYSTEM</h1>
+ 	<center><br><br><br><br>
+<h2>Doctor Login Page</h2>
+<style type="text/CSS">
+*{
+	font-family: serif;
+	
+}
+h1{
+  color: black;
+  text-shadow: 2px 2px white;
+  padding:1.5%;
+  margin-top:-1% ;
+  margin-right: -1%;
+  margin-left: -1%;
+  background-color: MidnightBlue;
+}
+label{
+    width: 100px;
+    display: inline-block;
+    margin-right: 10%;    
+}
+#form {
+    background-color: Teal;
+    border-radius: 30px;
+    color: black;
+    border-spacing:40px;
+    width: 380px; 
+    font-size:20px;
+    padding: 10px;
+}   
+input{
+	padding: 4px;
+}
+body{
+  background-image: linear-gradient(DarkSlateGrey, cyan);
+}
+</style>
+</head> 
+    <body>
+        <div id="form">
+        <form action="doctor_login_data" method="POST">{% csrf_token %}
+	<label>UserName</label> 
+	<input type="email" name="Email" id="el" onkeyup="emailvalid()" placeholder="Enter your email id"><span id="err" style="font-family:TimesNewRoman"></span><br><br>
+	<label>Password</label>
+	<input type="password" name="pass" id="ps" onkeyup="passvalid()" placeholder="Enter your password"><span id="err1" style="font-family:TimesNewRoman"></span><br><br>
+	<center><input type="submit" value="Login" onclick="valid()"></center>
+	<br>
+	Do not have account?<a href="doctor_register">SignUp</a><br><br>
+	<a href="doctor_forget_password">Forgot Password</a>
+	</center>
+	</form>        
+    </div>
+    <br><br><br><br><br>
+<marquee width="100%" direction="left" height="100px" style="color:red">
+<b style="text-shadow:2px 2px yellow">Welcome to Hospital Management System!</b>
+</marquee>
+<script>
+	function valid(){
+		var email=document.getElementById("el").value;
+		var ps=document.getElementById("ps").value;
+		err=document.getElementById("err");
+		err1=document.getElementById("err1");
+		if(email.length==0)
+		{
+			err.innerHTML="*PLZ enter email";
+		        err.style.color="red";
+		}
+		else
+		{
+			err.innerHTML="";
+		}
+		
+		if(ps.length==0)
+		{
+			err1.innerHTML="*PLZ enter password";
+			err1.style.color="red";
+		}
+		else
+		{
+			err1.innerHTML="";
+		}
+	}
+	function emailvalid(){
+		var email,reg;
+   	   	reg= /^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,3})$/;
+   	    	email=document.getElementById("el").value;
+   	   	err=document.getElementById("err");
+   	  	if(!reg.test(email))
+   	    	{
+   	       		err.innerHTML="Invalid EmailId!";
+   	        	err.style.color="red";
+   	    	}
+   	    	else
+   	    	{
+   	        	err.innerHTML="";
+   	    	}
+	}
+	function passvalid(){
+		var ps=document.getElementById("ps").value;
+		var err1=document.getElementById("err1");
+		
+		if(ps.length<5||ps.length>8)
+            	{
+                	err1.innerHTML="Pls enter correct password";
+                	err1.style.color="red";
+            	}
+            	else
+            	{
+                	err1.innerHTML="";
+            	}
+	}
+</script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,205 @@
+<html>
+<head>
+<style type="text/CSS">
+*{
+	font-family: serif;
+	
+}
+label{
+    width: 100px;
+    display: inline-block;
+    margin-right: 10%;
+    float: left;    
+}
+#form {
+    border-radius: 30px;
+    color: black;
+    border-spacing:40px;
+    width: 380px; 
+    font-size:20px;
+    padding: 10px;
+} 
+body{
+  background-image: linear-gradient(to left,plum,Tomato,Salmon,Tomato,plum);
+}
+input{
+	padding: 4px;
+}
+</style>
+</head>
+<body>
+<center><h1>Add Doctor</h2>
+	<div id="form">
+	<form action="admin_add_doctor_data" method="POST">{% csrf_token %}
+		<label>FirstName</label>
+		<input type="text" name="fname" id="fn" onkeyup="fnvalid()" placeholder="Enter your first name" required><span id="err" style="font-family:TimesNewRoman"></span><br><br>
+		<label>LastName</label>
+		<input type="text" name="lname" id="ln" onkeyup="lnvalid()" placeholder="Enter your last name" required><span id="err1" style="font-family:TimesNewRoman"></span><br><br>
+		<label>UserName</label>
+		<input type="email" name="Email" id="el" onkeyup="emailvalid()" placeholder="Enter your email-id" required><span id="err2" style="font-family:TimesNewRoman"></span><br><br>
+		<label>Password</label>
+		<input type="password" name="pass" id="ps" onkeyup="passvalid()" placeholder="Enter your password" required><span id="err3" style="font-family:TimesNewRoman"></span><br><br>
+		<label>Contact</label>
+		<input type="tel" name="num" id="contact" onkeyup="contactvalid()" placeholder="Enter your contact number" required><span id="err4" style="font-family:TimesNewRoman"></span><br><br>
+		<label>Department</label>
+		<select name="sec" id="dept">
+    <option value="Cardiologist">Cardiologist</option>
+    <option value="Dematologists">Dematologists</option>
+    <option value="Emergency Medicine Specialists">Emergency Medicine Specialists</option>
+    <option value="Allergists/Immunologists">Allergists/Immunologists</option>
+  </select><br><br>
+		<input type="submit" value="Register" onclick="valid()"></td>
+	</form></center></div>
+	<br><br>
+<script>
+	function valid(){
+		var fn = document.getElementById("fn").value;
+		var ln = document.getElementById("ln").value;
+		var email = document.getElementById("el").value;
+		var ps = document.getElementById("ps").value;
+		var contact = document.getElementById("contact").value;
+		err=document.getElementById("err");
+		err1=document.getElementById("err1");
+		err2=document.getElementById("err2");
+		err3=document.getElementById("err3");
+		err4=document.getElementById("err4");
+		
+		if(!fn.length==0 && !ln.length==0 && !email.length==0 && !ps.length==0 && !contact.length==0)
+		{
+			alert("Registered Successfully!")
+		}		
+		else
+		{			
+			if(fn.length==0)
+			{
+				err.innerHTML="*PLZ enter firstname";
+		       	 	err.style.color="blue";
+			}
+			else
+			{
+				err.innerHTML="";
+			}
+			
+			if(ln.length==0)
+			{
+				err1.innerHTML="*PLZ enter lastname";
+				err1.style.color="blue";
+			}
+			else
+			{
+				err1.innerHTML="";
+			}
+			
+			if(email.length==0)
+			{
+				err2.innerHTML="*PLZ enter EmailID";
+				err2.style.color="blue";	
+			}
+			else
+			{
+				err2.innerHTML="";	
+			}
+			
+			if(ps.length==0)
+			{
+				err3.innerHTML="*PLZ enter password";
+				err3.style.color="blue";
+			}
+			else
+			{
+				err3.innerHTML="";
+			}
+			
+			if(contact.length==0)
+			{
+				err4.innerHTML="*PLZ enter contact number";
+				err4.style.color="blue";	
+			}
+			else
+			{
+				err4.innerHTML="";
+			}		
+		}
+	}
+	function fnvalid()
+	{
+		var fn,reg;
+   	   	reg= /^[a-zA-Z]*$/
+   	    	fn=document.getElementById("fn").value;
+   	   	err=document.getElementById("err");
+   	  	if(!reg.test(fn))
+   	    	{
+   	       		err.innerHTML="Enter only alphabets";
+   	        	err.style.color="blue";
+   	    	}
+   	    	else
+   	    	{
+   	        	err.innerHTML="";
+   	    	}
+	}
+	function lnvalid()
+	{
+		var ln,reg;
+   	   	reg= /^[a-zA-Z]*$/
+   	    	ln=document.getElementById("ln").value;
+   	   	err1=document.getElementById("err1");
+   	  	if(!reg.test(ln))
+   	    	{
+   	       		err1.innerHTML="Enter only alphabets";
+   	        	err1.style.color="blue";
+   	    	}
+   	    	else
+   	    	{
+   	        	err1.innerHTML="";
+   	    	}
+	}
+	function emailvalid()
+	{
+		var email,reg;
+   	   	reg= /^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,3})$/;
+   	    	email=document.getElementById("el").value;
+   	   	err2=document.getElementById("err2");
+   	  	if(!reg.test(email))
+   	    	{
+   	       		err2.innerHTML="Invalid EmailId!";
+   	        	err2.style.color="blue";
+   	    	}
+   	    	else
+   	    	{
+   	        	err2.innerHTML="";
+   	    	}
+	}
+	function passvalid()
+	{
+		var ps=document.getElementById("ps").value;
+		var err3=document.getElementById("err3");
+		
+		if(ps.length<5||ps.length>8)
+            	{
+                	err3.innerHTML="Please enter valid password";
+                	err3.style.color="blue";
+            	}
+            	else
+            	{
+                	err3.innerHTML="";
+            	}
+	}
+	function contactvalid()
+	{
+		var contact,reg;
+   	   	reg=  /^\d{10}$/
+   	    	contact=document.getElementById("contact").value;
+   	   	err4=document.getElementById("err4");
+   	  	if(!reg.test(contact))
+   	    	{
+   	       		err4.innerHTML="Invalid contact";
+   	        	err4.style.color="blue";
+   	    	}
+   	    	else
+   	    	{
+   	        	err4.innerHTML="";
+   	    	}
+	} 
+</script>
+</body>
+</html>
